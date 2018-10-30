@@ -32,8 +32,8 @@ export default class VirtualCollectionBasic extends Component {
     constructor(props) {
         super(props);
         const itemSize = props.dimensions;
-        const columnWidth = this.calculateColumnWidth(itemSize);
-        const rowHeight = this.calculateRowHeight(itemSize);   
+        const columnWidth = this.getColumnWidth(itemSize);
+        const rowHeight = this.getRowHeight(itemSize);   
         this.state = {
             itemSize,
             columnWidth,
@@ -41,23 +41,23 @@ export default class VirtualCollectionBasic extends Component {
         };
     }
 
-    calculateColumnWidth(size) {
+    getColumnWidth(size) {
         return size.width + this.props.distance;
     }
 
-    calculateRowHeight(size) {
-        return size.height + this.props.distance;
-    }
-
-    calculateColumnCount(gridWidth, columnWidth) {
+    getColumnCount(gridWidth, columnWidth) {
         return Math.floor(gridWidth / columnWidth);
     }
 
-    calculateRowCount(columnCount) {
+    getRowHeight(size) {
+        return size.height + this.props.distance;
+    }
+
+    getRowCount(columnCount) {
         return Math.ceil(this.props.collection.length / columnCount);
     }
 
-    cellRenderer(columnCount, columnWidth) {
+    cellRenderer(columnCount) {
         return ({columnIndex, key, rowIndex, style}) => {
             const {
                 collection,
@@ -90,8 +90,8 @@ export default class VirtualCollectionBasic extends Component {
             <AutoSizer disableHeight>
                 {
                     ({width}) => {
-                        const columnCount = this.calculateColumnCount(width, columnWidth);
-                        const rowCount = this.calculateRowCount(columnCount);
+                        const columnCount = this.getColumnCount(width, columnWidth);
+                        const rowCount = this.getRowCount(columnCount);
                         const cellRenderer = this.cellRenderer(columnCount, columnWidth);
                         return (
                             <WindowScroller>
