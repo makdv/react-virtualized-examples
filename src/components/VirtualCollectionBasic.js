@@ -61,7 +61,6 @@ export default class VirtualCollectionBasic extends Component {
         return ({columnIndex, key, rowIndex, style}) => {
             const {
                 collection,
-                distance,
                 dimensions: {width, height},
             } = this.props;
             const index = (rowIndex * columnCount) + columnIndex;
