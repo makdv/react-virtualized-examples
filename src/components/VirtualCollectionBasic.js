@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import { number, shape, arrayOf, object } from 'prop-types';
 import {
     Grid,
     WindowScroller,
     AutoSizer,
 } from 'react-virtualized';
+import { getItemColor } from '../utils';
 
 const itemStyle = {
-    backgroundColor: 'rgb(244, 67, 54)',
     borderRadius: '0.5rem',
-    height: '300px',
     marginBottom: '0.5rem',
-    width: '100%',
     fontSize: '20px',
     color: 'white',
     display: 'flex',
@@ -20,13 +18,16 @@ const itemStyle = {
 };
 export default class VirtualCollectionBasic extends Component {
     static propTypes = {
-        distance: PropTypes.number,
-        dimensions: PropTypes.object,
-        collection: PropTypes.arrayOf(PropTypes.object).isRequired,
+        distance: number,
+        dimensions: shape({
+            width: number,
+            height: number,
+        }),
+        collection: arrayOf(object).isRequired,
     };
     static defaultProps = {
         distance: 20,
-        dimensions: {width: 200, height: 400},
+        dimensions: {width: 150, height: 300},
     };
 
     constructor(props) {
@@ -64,6 +65,7 @@ export default class VirtualCollectionBasic extends Component {
                 dimensions: {width, height},
             } = this.props;
             const index = (rowIndex * columnCount) + columnIndex;
+            const color = getItemColor(index);
             const item = collection[index];
             if (index >= collection.length) {
                 return null;
@@ -74,6 +76,7 @@ export default class VirtualCollectionBasic extends Component {
                         style={{
                             ...style,
                             ...itemStyle,
+                            backgroundColor: color,
                             width, 
                             height,
                         }}
@@ -107,6 +110,7 @@ export default class VirtualCollectionBasic extends Component {
                                             columnWidth={columnWidth}
                                             rowCount={rowCount}
                                             rowHeight={rowHeight}
+                                            estimatedColumnSizex
                                             overscanRowCount={3} 
                                             height={height}
                                             width={width}
