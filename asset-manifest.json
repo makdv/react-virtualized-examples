@@ -1,7 +1,16 @@
 {
-  "main.css": "static/css/main.92266919.css",
-  "main.css.map": "static/css/main.92266919.css.map",
-  "main.js": "static/js/main.c4c35ec6.js",
-  "main.js.map": "static/js/main.c4c35ec6.js.map",
-  "static/media/logo.svg": "static/media/logo.5d5d9eef.svg"
+  "files": {
+    "main.css": "/react-virtualized-examples/static/css/main.a712a14d.chunk.css",
+    "main.js": "/react-virtualized-examples/static/js/main.08565fdc.chunk.js",
+    "main.js.map": "/react-virtualized-examples/static/js/main.08565fdc.chunk.js.map",
+    "runtime~main.js": "/react-virtualized-examples/static/js/runtime~main.98fb2627.js",
+    "runtime~main.js.map": "/react-virtualized-examples/static/js/runtime~main.98fb2627.js.map",
+    "static/js/2.618bc2cc.chunk.js": "/react-virtualized-examples/static/js/2.618bc2cc.chunk.js",
+    "static/js/2.618bc2cc.chunk.js.map": "/react-virtualized-examples/static/js/2.618bc2cc.chunk.js.map",
+    "index.html": "/react-virtualized-examples/index.html",
+    "precache-manifest.274a4410bd60a0d3178b2d0645351e1d.js": "/react-virtualized-examples/precache-manifest.274a4410bd60a0d3178b2d0645351e1d.js",
+    "service-worker.js": "/react-virtualized-examples/service-worker.js",
+    "static/css/main.a712a14d.chunk.css.map": "/react-virtualized-examples/static/css/main.a712a14d.chunk.css.map",
+    "static/media/logo.svg": "/react-virtualized-examples/static/media/logo.5d5d9eef.svg"
+  }
 }
