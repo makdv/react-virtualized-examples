@@ -2,8 +2,9 @@ Repository contains implementation examples of virtualized grid,
 based on react-virtualized package (https://github.com/bvaughn/react-virtualized)
 
 ## Examples include:
- - Grid with cards, having static default size
- - Grid with cards, with possibility to change card size (#TODO)
- - Grid with cards of dynamic size (#TODO)
+ - Grid with items, having static default size
+ - Optimized example with replacing item with placeholder when scrolling
+ - Grid with items, with possibility to change size
+ - Grid fetching data on scroll (#TODO)
 
  Check it out on https://makdv.github.io/react-virtualized-examples/
