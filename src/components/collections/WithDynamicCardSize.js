@@ -99,12 +99,18 @@ export default class WithDynamicCardSize extends Component {
   };
 
   cellRenderer(columnCount, columnWidth) {
-    return ({ columnIndex, key, rowIndex, style, isScrolling, isVisible, parent }) => {
+    return ({
+      columnIndex,
+      key,
+      rowIndex,
+      style,
+      isScrolling,
+      isVisible,
+      parent
+    }) => {
+      const { collection } = this.props;
       const {
-        collection,
-      } = this.props;
-      const {
-        itemSize: { width, height },
+        itemSize: { width, height }
       } = this.state;
       const index = rowIndex * columnCount + columnIndex;
       const color = getItemColor(index);
@@ -173,10 +179,19 @@ export default class WithDynamicCardSize extends Component {
   }
 
   render() {
-    const { columnWidth, itemSize, estimatedRowHeight, useAutoHeight, cache } = this.state;
+    const {
+      columnWidth,
+      itemSize,
+      estimatedRowHeight,
+      useAutoHeight,
+      cache
+    } = this.state;
     return (
       <div>
-        <UncontrolledDropdown setActiveFromChild style={{display: 'flex', marginBottom: '20px'}}>
+        <UncontrolledDropdown
+          setActiveFromChild
+          style={{ display: "flex", marginBottom: "20px" }}
+        >
           <DropdownToggle caret>{itemSize.label}</DropdownToggle>
           <DropdownMenu>
             {sizes.map(size => (
@@ -190,17 +205,20 @@ export default class WithDynamicCardSize extends Component {
             ))}
           </DropdownMenu>
         </UncontrolledDropdown>
-        <AutoSizer disableHeight>
-          {({ width }) => {
-            const columnCount = this.getColumnCount(width, columnWidth);
-            const rowCount = this.getRowCount(columnCount);
-            const cellRenderer = this.cellRenderer(columnCount, columnWidth);
-            const rowHeight = useAutoHeight
-              ? cache.rowHeight
-              : estimatedRowHeight;
-            return (
-              <WindowScroller>
-                {({ height, isScrolling, scrollTop }) => (
+        <WindowScroller>
+          {({ height, isScrolling, scrollTop }) => (
+            <AutoSizer disableHeight>
+              {({ width }) => {
+                const columnCount = this.getColumnCount(width, columnWidth);
+                const rowCount = this.getRowCount(columnCount);
+                const cellRenderer = this.cellRenderer(
+                  columnCount,
+                  columnWidth
+                );
+                const rowHeight = useAutoHeight
+                  ? cache.rowHeight
+                  : estimatedRowHeight;
+                return (
                   <Grid
                     ref={this.Grid}
                     autoHeight
@@ -219,11 +237,11 @@ export default class WithDynamicCardSize extends Component {
                     height={height}
                     width={width}
                   />
-                )}
-              </WindowScroller>
-            );
-          }}
-        </AutoSizer>
+                );
+              }}
+            </AutoSizer>
+          )}
+        </WindowScroller>
       </div>
     );
   }

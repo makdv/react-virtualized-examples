@@ -17,3 +17,11 @@ const BADGE_COLORS = [
   ];
 
   export const getItemColor = (i) => BADGE_COLORS[i % BADGE_COLORS.length];
+
+  export const arrayUniq = (arr) => {
+    const temp = {};
+    arr.forEach((item) => {
+      temp[item] = item;
+    });
+    return Object.values(temp);
+  }
