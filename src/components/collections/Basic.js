@@ -96,7 +96,7 @@ export default class Basic extends Component {
                   rowHeight={rowHeight}
                   overscanRowCount={3}
                   height={height}
-                  width={width}
+                  width={columnCount*columnWidth - this.props.distance}
                 />
               );
             }}

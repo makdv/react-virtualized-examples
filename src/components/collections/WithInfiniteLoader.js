@@ -52,7 +52,7 @@ export default class WithInfiniteLoader extends Component {
       <InfiniteLoader
         isRowLoaded={this.isRowLoaded}
         loadMoreRows={this.loadMoreRows}
-        rowCount={this.props.collection.length}
+        rowCount={this.state.data.totalCount || 30}
       >
         {({ onRowsRendered, registerChild }) => {
           this.onRowsRendered = onRowsRendered;
@@ -133,7 +133,7 @@ export default class WithInfiniteLoader extends Component {
   }
 
   getRowCount(columnCount) {
-    return Math.ceil(this.props.collection.length / columnCount);
+    return Math.ceil((this.state.data.totalCount || 30) / columnCount);
   }
 
   cellRangeRenderer = props => {

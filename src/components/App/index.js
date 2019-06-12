@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
-import './App.scss';
-import Header from '../Header';
-import Main from '../Main';
+import React, { useState } from "react";
+import "./App.scss";
+import Header from "../Header";
+import Main from "../Main";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Header />
-        <div className="App-intro">
-          <Main />
-        </div>
+const App = () => {
+  const [activeTab, setActiveTab] = useState(1);
+  const toggle = tab => {
+    if (activeTab !== tab) {
+      setActiveTab(tab);
+    }
+  };
+
+  return (
+    <div className="App">
+      <Header activeTab={activeTab} toggle={toggle} />
+      <div className="App-intro">
+        <Main activeTab={activeTab} />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;

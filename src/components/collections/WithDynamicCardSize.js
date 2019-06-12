@@ -19,9 +19,9 @@ import VirtualCard from "./VirtualCard";
 
 const sizes = ["Small", "Default", "Large", "Random"];
 const dimensions = {
-  [sizes[0]]: { width: 100, height: 250, label: sizes[0] },
+  [sizes[0]]: { width: 100, height: 200, label: sizes[0] },
   [sizes[1]]: { width: 150, height: 300, label: sizes[1] },
-  [sizes[2]]: { width: 250, height: 450, label: sizes[2] }
+  [sizes[2]]: { width: 215, height: 400, label: sizes[2] }
 };
 
 export default class WithDynamicCardSize extends Component {
